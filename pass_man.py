@@ -13,9 +13,9 @@ def write_salt():
     This function generates a key and save it into a
     file to be used as a salt value.
     """
-    key = Fernet.generate_key()
-    with open("key.key", "wb") as key_file:
-        key_file.write(key)
+    salt = os.urandom(32)
+    with open("salt.txt", "wb") as key_file:
+        key_file.write(salt)
         key_file.close()
 
 
@@ -24,7 +24,7 @@ def load_salt():
     This function loads the key from the current directory
     named `key.key` to use as a salt.
     """
-    return open("key.key", "rb").read()
+    return open("salt.txt", "rb").read()
 
 
 def load_key(input_master_pass):
@@ -32,10 +32,10 @@ def load_key(input_master_pass):
     This function uses the master password and salt to
     create an encryption key for the user.
     """
-    encoded_input_pass = input_master_pass.encode()  # Convert to type bytes
+    encoded_input_pass = input_master_pass.encode()
     salt = load_salt()
     kdf = PBKDF2HMAC(
-        algorithm=hashes.SHA256(),
+        algorithm=hashes.SHA512(),
         length=32,
         salt=salt,
         iterations=100000,
@@ -235,7 +235,7 @@ if not os.path.isfile('hash.txt'):
     file = open("hash.txt", 'w')
     file.write(master_pass)
     file.close()
-if not os.path.isfile('key.key'):
+if not os.path.isfile('salt.txt'):
     write_salt()
 if not os.path.isfile('data.csv'):
     file = open("data.csv", 'x')
