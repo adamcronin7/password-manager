@@ -100,6 +100,7 @@ def decrypt_data(input_master_pass):
     f = load_key(input_master_pass)
     with open('data.csv', "r", encoding='utf-8', newline='') as data_file:
         csv_reader = csv.reader(data_file, delimiter=',')
+        line_exists = False
         for row in csv_reader:
             try:
                 decrypted_service = str(f.decrypt(row[0].encode()), 'utf-8')
@@ -108,9 +109,12 @@ def decrypt_data(input_master_pass):
                 print("\nService: " + str(decrypted_service))
                 print("Email: " + str(decrypted_email))
                 print("Password: " + str(decrypted_pass) + "\n")
+                line_exists = True
             except InvalidToken:
                 print("Decryption Unsuccessful")
         data_file.close()
+    if not line_exists:
+        print("No Services Found\n")
 
 
 def search(input_master_pass):
@@ -124,6 +128,7 @@ def search(input_master_pass):
     f = load_key(input_master_pass)
     with open('data.csv', "r", encoding='utf-8') as data_file:
         csv_reader = csv.reader(data_file, delimiter=',')
+        line_exists = False
         for row in csv_reader:
             try:
                 decrypted_service = str(f.decrypt(row[0].encode()), 'utf-8')
@@ -133,8 +138,11 @@ def search(input_master_pass):
                     print("\nService: " + str(decrypted_service))
                     print("Email: " + str(decrypted_email))
                     print("Password: " + str(decrypted_pass) + "\n")
+                    line_exists = True
             except InvalidToken:
                 print("Decryption Unsuccessful")
+    if not line_exists:
+        print("No Services With That Name Found\n")
 
 
 def rem_all_pass():
@@ -143,7 +151,7 @@ def rem_all_pass():
     'data.csv' file.
     """
     with open('data.csv', "w") as data_file:
-        file.truncate()
+        data_file.truncate()
         print("Passwords Removed\n")
         data_file.close()
 
