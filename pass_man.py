@@ -57,7 +57,7 @@ def auth():
     This function authenticates the user by comparing
     their hashed input with the hash value in 'hash.txt'
     """
-    input_pass = input("Please Input Your Master Password To Do This: ")
+    input_pass = input("Please Enter Your Master Password To Do This: ")
     hashed_input_pass = hash_pass(input_pass)
     hashed_input = load_hash()
     if hashed_input_pass == hashed_input:
@@ -191,9 +191,9 @@ def change_pass(input_master_pass):
     new password so they can still access it.
     """
     old_pass = input_master_pass
-    new_pass = input("Please enter your new password: ")
+    new_pass = input("Please Enter Your New Password: ")
     hashed_new_pass = hash_pass(new_pass)
-    confirm_pass = hash_pass(input("Please confirm your new password: "))
+    confirm_pass = hash_pass(input("Please Confirm Your New Password: "))
     if confirm_pass == hashed_new_pass:
         lines = list()
         with open('data.csv', "r", encoding='utf-8', newline='') as data_file:
@@ -258,7 +258,7 @@ while 1 == 1:
     if user_choice == "1":
         master_pass = auth()
         if master_pass:
-            service = input("Please Input The Service: ").encode()
+            service = input("Please Enter The Service: ").encode()
             email = input("Please Enter The Email Used For This Service: ").encode()
             password = input("Please Enter The Password For This Service: ").encode()
             encrypt_data(master_pass, service, email, password)
