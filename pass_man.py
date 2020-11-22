@@ -63,7 +63,6 @@ def auth():
     if hashed_input_pass == hashed_input:
         return input_pass
     else:
-        print("Incorrect, Please Try Again\n")
         return False
 
 
