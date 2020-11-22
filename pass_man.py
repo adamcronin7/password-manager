@@ -57,7 +57,7 @@ def auth():
     This function authenticates the user by comparing
     their hashed input with the hash value in 'hash.txt'
     """
-    input_pass = input("Please Enter Your Master Password To Do This: ")
+    input_pass = input("Please enter your master password to do this: ")
     hashed_input_pass = hash_pass(input_pass)
     hashed_input = load_hash()
     if hashed_input_pass == hashed_input:
@@ -120,7 +120,7 @@ def search(input_master_pass):
     the key used to decrypt the passwords. Each row is
     decrypted and printed to the user.
     """
-    search_service = input("Please Enter Which Service You Are Looking For: ")
+    search_service = input("Please enter which service you are looking for: ")
     f = load_key(input_master_pass)
     with open('data.csv', "r", encoding='utf-8') as data_file:
         csv_reader = csv.reader(data_file, delimiter=',')
@@ -157,7 +157,7 @@ def rem_pass(input_master_pass):
     a list. The file is then cleared and repopulated using
     the list.
     """
-    search_service = input("Please Enter Which Service You Want To Delete: ")
+    search_service = input("Please enter which service you want to delete: ")
     check = input("Are You Sure? Enter \"y\" to continue: ")
     if check == "y":
         print("Deleting\n")
@@ -191,9 +191,9 @@ def change_pass(input_master_pass):
     new password so they can still access it.
     """
     old_pass = input_master_pass
-    new_pass = input("Please Enter Your New Password: ")
+    new_pass = input("Please enter your new password: ")
     hashed_new_pass = hash_pass(new_pass)
-    confirm_pass = hash_pass(input("Please Confirm Your New Password: "))
+    confirm_pass = hash_pass(input("Please confirm your new password: "))
     if confirm_pass == hashed_new_pass:
         lines = list()
         with open('data.csv', "r", encoding='utf-8', newline='') as data_file:
@@ -230,7 +230,7 @@ def change_pass(input_master_pass):
 Initial checks to ensure all files are created.
 """
 if not os.path.isfile('hash.txt'):
-    master_pass = hash_pass(input("Please Choose a Master Password: "))
+    master_pass = hash_pass(input("Please choose a master password: "))
     file = open("hash.txt", 'w')
     file.write(master_pass)
     file.close()
@@ -258,46 +258,46 @@ while 1 == 1:
     if user_choice == "1":
         master_pass = auth()
         if master_pass:
-            service = input("Please Enter The Service: ").encode()
-            email = input("Please Enter The Email Used For This Service: ").encode()
-            password = input("Please Enter The Password For This Service: ").encode()
+            service = input("Please enter the service: ").encode()
+            email = input("Please enter the email used for this service: ").encode()
+            password = input("Please enter the password for this service: ").encode()
             encrypt_data(master_pass, service, email, password)
-            input("Press Enter to continue...")
+            input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "2":
         master_pass = auth()
         if master_pass:
             decrypt_data(master_pass)
-            input("Press Enter to continue...")
+            input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "3":
         master_pass = auth()
         if master_pass:
             search(master_pass)
-            input("Press Enter to continue...")
+            input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "4":
         master_pass = auth()
         if master_pass:
             rem_all_pass()
-            input("Press Enter to continue...")
+            input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "5":
         master_pass = auth()
         if master_pass:
             rem_pass(master_pass)
-            input("Press Enter to continue...")
+            input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "6":
         master_pass = auth()
         if master_pass:
             change_pass(master_pass)
-            input("Press Enter to continue...")
+            input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "q":
