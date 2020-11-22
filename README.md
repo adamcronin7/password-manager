@@ -1,2 +1,4 @@
 # password-manager
-This is a simple, local password manager created using python.
+A simple, local password manager made using python.
+
+A link to the writeup [here](WRITEUP.md).
