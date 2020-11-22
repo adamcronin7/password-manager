@@ -10,7 +10,7 @@ import os.path
 
 def write_salt():
     """
-    This function generates a key and save it into a
+    This function generates a random value and save it into a
     file to be used as a salt value.
     """
     salt = os.urandom(32)
@@ -22,7 +22,7 @@ def write_salt():
 def load_salt():
     """
     This function loads the key from the current directory
-    named `key.key` to use as a salt.
+    named `salt.txt` to use as a salt.
     """
     return open("salt.txt", "rb").read()
 
