@@ -273,6 +273,7 @@ while 1 == 1:
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
+            input("Press enter to continue...")
     elif user_choice == "2":
         master_pass = auth()
         if master_pass:
@@ -280,6 +281,7 @@ while 1 == 1:
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
+            input("Press enter to continue...")
     elif user_choice == "3":
         master_pass = auth()
         if master_pass:
@@ -287,6 +289,7 @@ while 1 == 1:
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
+            input("Press enter to continue...")
     elif user_choice == "4":
         master_pass = auth()
         if master_pass:
@@ -294,6 +297,7 @@ while 1 == 1:
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
+            input("Press enter to continue...")
     elif user_choice == "5":
         master_pass = auth()
         if master_pass:
@@ -301,6 +305,7 @@ while 1 == 1:
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
+            input("Press enter to continue...")
     elif user_choice == "6":
         master_pass = auth()
         if master_pass:
@@ -308,8 +313,10 @@ while 1 == 1:
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
+            input("Press enter to continue...")
     elif user_choice == "q":
         print("Quitting\n")
         break
     else:
-        print("\nPlease Enter a Valid Option")
+        print("Please Enter a Valid Option\n")
+        input("Press enter to continue...")
