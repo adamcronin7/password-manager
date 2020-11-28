@@ -74,7 +74,7 @@ def hash_pass(input_master_pass):
     return hashed_pass
 
 
-def encrypt_data(input_master_pass, input_service, input_email, input_pass):
+def add_pass(input_master_pass, input_service, input_email, input_pass):
     """
     This function loads the key using the input master password
     and encrypts the data input by the user. This is then appended
@@ -91,7 +91,7 @@ def encrypt_data(input_master_pass, input_service, input_email, input_pass):
         data_file.close()
 
 
-def decrypt_data(input_master_pass):
+def retrieve_all_pass(input_master_pass):
     """
     This function loads the decryption key and opens the data file
     in read mode. It then loops through the file, creating a heading
@@ -117,7 +117,7 @@ def decrypt_data(input_master_pass):
         print("No Services Found\n")
 
 
-def search(input_master_pass):
+def retrieve_pass(input_master_pass):
     """
     This function allows a user to search for a password.
     The master password input by the user is used to load
@@ -269,21 +269,21 @@ while 1 == 1:
             service = input("Please enter the service: ").encode()
             email = input("Please enter the email used for this service: ").encode()
             password = input("Please enter the password for this service: ").encode()
-            encrypt_data(master_pass, service, email, password)
+            add_pass(master_pass, service, email, password)
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "2":
         master_pass = auth()
         if master_pass:
-            decrypt_data(master_pass)
+            retrieve_all_pass(master_pass)
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
     elif user_choice == "3":
         master_pass = auth()
         if master_pass:
-            search(master_pass)
+            retrieve_pass(master_pass)
             input("Press enter to continue...")
         else:
             print("Incorrect Master Password\n")
